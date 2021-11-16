@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace DIYPizza.Models.Entity
 {
-    public class Malzeme
+    public class Siparis
     {
         public int Id { get; set; }
 
-        [Required, MaxLength(20)]
-        public string Ad { get; set; }
+        public DateTime Zaman { get; set; } = DateTime.Now;
 
-        public ICollection<Siparis> Siparisler { get; set; }
+        [Required, MaxLength(400)]
+        public string Adres { get; set; }
+
+        public ICollection<Malzeme> Malzemeler { get; set; }
     }
 }

@@ -1,17 +1,26 @@
-﻿@model List<Secim>
+﻿@model Siparis
 @{ 
     ViewData["Title"] = "Siparişiniz Alındı";
 }
 
 <h1>Siparişiniz için teşekkürler.</h1>
 
-<p>Belirtmiş olduğunuz malzemelerle siparişiniz oluşturulmuştur. Pizzanız hazır olduğunda adresinize gönderilecektir.</p>
+<p>Belirtmiş olduğunuz malzemelerle @Model.Id nolu siparişiniz oluşturulmuştur. Pizzanız hazır olduğunda adresinize gönderilecektir.</p>
 
 <h4>Seçilen Malzemeler</h4>
-
 <ul>
-    @foreach (Secim secim in Model)
+    @foreach (Malzeme malzeme in Model.Malzemeler)
     {
-        <li>@secim.MalzemeAd</li>
+        <li>@malzeme.Ad</li>
     }
 </ul>
+
+<h4>Gönderim Adresi</h4>
+<p>
+    @Model.Adres
+</p>
+
+<h4>Sipariş Oluşturulma Zamanı</h4>
+<p>
+    @Model.Zaman
+</p>

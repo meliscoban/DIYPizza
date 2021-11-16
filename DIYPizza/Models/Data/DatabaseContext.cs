@@ -42,5 +42,7 @@ namespace DIYPizza.Models.Data
         }
 
         public DbSet<Malzeme> Malzemeler { get; set; }
+
+        public DbSet<Siparis> Siparisler { get; set; }
     }
 }
