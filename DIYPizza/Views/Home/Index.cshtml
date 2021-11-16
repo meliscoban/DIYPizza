@@ -1,8 +1,28 @@
-﻿@{
+﻿@model List<Secim>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<form asp-controller="Home" asp-action="Index" method="post">
+
+    <h1>Pizzanı Kendin Yap</h1>
+    <p>Lütfen pizzanızda bulunmasını istediğiniz malzemeleri seçiniz.</p>
+
+    <div asp-validation-summary="All"></div>
+
+    <div>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <div>
+                <input type="hidden" asp-for="@Model[i].MalzemeId"/>
+                <input type="hidden" asp-for="@Model[i].MalzemeAd"/>
+                <label>
+                <input type="checkbox" asp-for="@Model[i].SeciliMi" />
+                @Model[i].MalzemeAd
+                </label>
+            </div>
+        }
+    </div>
+
+    <button class="btn btn-secondary">Sipariş Ver</button>
+</form>
